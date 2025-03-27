@@ -43,8 +43,6 @@ class CreateUserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      floatingActionButton: FloatingActionButton(onPressed: () {
-      }),
       body: BlocConsumer<UserBloc, UserState>(
         listener: (context, state) {
           if (state is UserCreateLoadingState) {

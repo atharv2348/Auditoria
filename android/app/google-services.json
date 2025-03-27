@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "878833779847",
+    "project_id": "auditoria-a3db4",
+    "storage_bucket": "auditoria-a3db4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878833779847:android:4c1e1c5d598e96bce3a422",
+        "android_client_info": {
+          "package_name": "com.gcek.auditoria"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7C13LrbJmBvvEaOvi7Ufm9ojIdkCmvm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

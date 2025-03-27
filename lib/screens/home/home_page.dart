@@ -29,7 +29,7 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   final TextEditingController eventController = TextEditingController();
   final CalendarFormat _calendarFormat = CalendarFormat.month;
-  final DateTime _focusedDay = DateTime.now();
+  DateTime _focusedDay = DateTime.now();
   final ValueNotifier<DateTime> _selectedDay = ValueNotifier<DateTime>(
       DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day));
   final ValueNotifier<List<EventModel>> _selectedEvent = ValueNotifier([]);
@@ -61,6 +61,7 @@ class _HomePageState extends State<HomePage>
     _animationController.reset();
     _animationController.forward();
     _selectedEvent.value = _getEventsForDay(normalizedSelectedDay);
+    _focusedDay = normalizedSelectedDay;
   }
 
   @override
@@ -139,15 +140,12 @@ class _HomePageState extends State<HomePage>
                               height: 100.h,
                             ),
                           ),
-                          SizedBox(height: 10.h),
-                          Text(state.user.firstName!,
+                          SizedBox(height: 20.h),
+                          Text(
+                              "${state.user.firstName!} ${state.user.lastName!}",
                               style: CustomTextstyles.subHeading
                                   .copyWith(color: Colors.grey.shade800)),
-                          Text(state.user.email!,
-                              overflow: TextOverflow.ellipsis,
-                              style: CustomTextstyles.medium
-                                  .copyWith(color: Colors.grey.shade800)),
-                          SizedBox(height: 20.h),
+                          SizedBox(height: 10.h),
                         ],
                       ),
                     ),
@@ -168,7 +166,7 @@ class _HomePageState extends State<HomePage>
                         context.push(Routes.bookingRequestPage);
                       },
                     ),
-                  if (state.user.role != 'admin')
+                  if (state.user.role == 'admin')
                     drawerTile(
                       icon: Icons.lock_person_rounded,
                       title: "Access Requests",

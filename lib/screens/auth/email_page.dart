@@ -155,8 +155,9 @@ class _EmailPageState extends State<EmailPage> {
                                 ),
                                 Text(
                                   value,
-                                  style: CustomTextstyles.medium
-                                      .copyWith(color: CustomColors.color4),
+                                  style: CustomTextstyles.medium.copyWith(
+                                      color: CustomColors.color6,
+                                      fontWeight: FontWeight.w600),
                                 ),
                               ],
                             );

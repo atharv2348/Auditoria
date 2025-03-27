@@ -98,8 +98,15 @@ class ProfilePage extends StatelessWidget {
                           text: "LogOut",
                           color: CustomColors.color6,
                           onTap: () {
-                            UserRepo.removeUserLocally();
-                            router.go(Routes.emailScreen);
+                            // UserRepo.removeUserLocally();
+                            // router.go(Routes.emailScreen);
+                            _showConfirmationDialog(
+                              context: context,
+                              onConfirm: () {
+                                router.pop();
+                                _handelLogout();
+                              },
+                            );
                           },
                         ),
                         SizedBox(height: 20.h),
@@ -111,6 +118,50 @@ class ProfilePage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void _handelLogout() async {
+    await UserRepo.removeUserLocally();
+    router.go(Routes.emailScreen);
+  }
+
+  void _showConfirmationDialog({
+    required BuildContext context,
+    required VoidCallback onConfirm,
+  }) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(
+          "Logout",
+          style: CustomTextstyles.subHeading.copyWith(
+            color: CustomColors.color5,
+          ),
+        ),
+        content: Text(
+          "Are you sure you want to log out?",
+          style: CustomTextstyles.regular.copyWith(color: Colors.grey.shade800),
+        ),
+        actions: [
+          smallButton(
+            text: "Cancel",
+            color: CustomColors.disabled,
+            paddingVertical: 10.h,
+            paddingHorizontal: 15.w,
+            onTap: () {
+              context.pop();
+            },
+          ),
+          smallButton(
+            text: "Confirm",
+            color: CustomColors.color5,
+            paddingVertical: 10.h,
+            paddingHorizontal: 15.w,
+            onTap: onConfirm,
+          ),
+        ],
       ),
     );
   }
