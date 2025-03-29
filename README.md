@@ -36,7 +36,8 @@ Role-Based Access (Students, Club Coordinators, Higher Authorities)
   
 ## Screenshots
 
-![Auditoria](https://github.com/user-attachments/assets/1cae7c08-a2ee-4462-a709-7de69047c63f)
+![Auditoria](https://github.com/user-attachments/assets/fbc55836-8ebc-4e4d-91ad-ff643a18d5a1)
+
 
   
 ## Contact
