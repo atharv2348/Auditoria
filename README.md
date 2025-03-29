@@ -14,14 +14,14 @@ Role-Based Access (Students, Club Coordinators, Higher Authorities)
   - State Management using flutter_bloc & Cubit
   - Clean Architecture for Maintainability
   - API Integration using HTTP Package
-
+  
 ## App Flow
 
 1️⃣ Students & Coordinators: Request auditorium bookings with event details.  
 2️⃣ Higher Authorities: Approve or reject booking requests.  
 3️⃣ Notifications: Approved events trigger an email & in-app notification.  
 4️⃣ My Events Page: Users can track their approved bookings.  
-
+  
 ## Tech Stack
 
 🔹 Flutter - Cross-platform development  
@@ -33,14 +33,13 @@ Role-Based Access (Students, Club Coordinators, Higher Authorities)
 🔹 MongoDB - Database for storing user and event data  
 🔹 Responsive UI- Mobile & Tablet Support  
 🔹 Clean Architecture - Layered Code Structure  
-
+  
 ## Screenshots
 
 ![Auditoria](https://github.com/user-attachments/assets/1cae7c08-a2ee-4462-a709-7de69047c63f)
 
-
-
+  
 ## Contact
 
-📩 Email: atharvc2022@gmail.com
+📩 Email: atharvc2022@gmail.com  
 🔗 LinkedIn: https://www.linkedin.com/in/atharv2348/
