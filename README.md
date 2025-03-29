@@ -17,22 +17,22 @@ Role-Based Access (Students, Club Coordinators, Higher Authorities)
 
 ## App Flow
 
-1️⃣ Students & Coordinators: Request auditorium bookings with event details.
-2️⃣ Higher Authorities: Approve or reject booking requests.
-3️⃣ Notifications: Approved events trigger an email & in-app notification.
-4️⃣ My Events Page: Users can track their approved bookings.
+1️⃣ Students & Coordinators: Request auditorium bookings with event details.  
+2️⃣ Higher Authorities: Approve or reject booking requests.  
+3️⃣ Notifications: Approved events trigger an email & in-app notification.  
+4️⃣ My Events Page: Users can track their approved bookings.  
 
 ## Tech Stack
 
-🔹 Flutter - Cross-platform development
-🔹 Flutter Bloc & Cubit - State Management
-🔹 Go Router - Navigation
-🔹 HTTP Package - API Requests
-🔹 Firebase - Notifications
-🔹 Node.js & Express - Custom backend for authentication and CRUD operations
-🔹 MongoDB - Database for storing user and event data
-🔹 Responsive UI- Mobile & Tablet Support
-🔹 Clean Architecture - Layered Code Structure
+🔹 Flutter - Cross-platform development  
+🔹 Flutter Bloc & Cubit - State Management  
+🔹 Go Router - Navigation  
+🔹 HTTP Package - API Requests  
+🔹 Firebase - Notifications  
+🔹 Node.js & Express - Custom backend for authentication and CRUD operations  
+🔹 MongoDB - Database for storing user and event data  
+🔹 Responsive UI- Mobile & Tablet Support  
+🔹 Clean Architecture - Layered Code Structure  
 
 ## Screenshots
 
