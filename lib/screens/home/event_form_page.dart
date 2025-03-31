@@ -200,7 +200,7 @@ class _EventFormPageState extends State<EventFormPage> {
                     SizedBox(height: 40.h),
                     TextField(
                         controller: _titleController,
-                        style: const TextStyle(color: Colors.black),
+                        cursorColor: CustomColors.color5,
                         decoration: CustomInputDecoration.getDecoration(
                             labelText: 'Event Name*')),
                     SizedBox(height: 20.h),
@@ -208,13 +208,13 @@ class _EventFormPageState extends State<EventFormPage> {
                         controller: _descController,
                         maxLines: null,
                         keyboardType: TextInputType.multiline,
-                        style: const TextStyle(color: Colors.black),
+                        cursorColor: CustomColors.color5,
                         decoration: CustomInputDecoration.getDecoration(
                             labelText: 'Event Description*')),
                     SizedBox(height: 20.h),
                     TextField(
                         controller: _organizerController,
-                        style: const TextStyle(color: Colors.black),
+                        cursorColor: CustomColors.color5,
                         decoration: CustomInputDecoration.getDecoration(
                             labelText: 'Organizer*')),
                     SizedBox(height: 20.h),
@@ -242,7 +242,6 @@ class _EventFormPageState extends State<EventFormPage> {
                             enableInteractiveSelection: true,
                             enableSuggestions: true,
                             controller: _startTimeController,
-                            style: const TextStyle(color: Colors.black),
                             decoration: CustomInputDecoration.getDecoration(
                                 labelText: 'Start Time*'),
                             readOnly: true,
@@ -256,7 +255,6 @@ class _EventFormPageState extends State<EventFormPage> {
                           child: TextField(
                             onChanged: (value) {},
                             controller: _endTimeController,
-                            style: const TextStyle(color: Colors.black),
                             decoration: CustomInputDecoration.getDecoration(
                                 labelText: 'End Time*'),
                             readOnly: true,
@@ -273,7 +271,7 @@ class _EventFormPageState extends State<EventFormPage> {
                         controller: _expAttendeesController,
                         minLines: 1,
                         maxLines: null,
-                        style: const TextStyle(color: Colors.black),
+                        cursorColor: CustomColors.color5,
                         decoration: CustomInputDecoration.getDecoration(
                             labelText: 'Expected Attendees')),
                     SizedBox(height: 20.h),
@@ -281,7 +279,7 @@ class _EventFormPageState extends State<EventFormPage> {
                         controller: _instructionsController,
                         maxLines: null,
                         keyboardType: TextInputType.multiline,
-                        style: const TextStyle(color: Colors.black),
+                        cursorColor: CustomColors.color5,
                         decoration: CustomInputDecoration.getDecoration(
                             labelText: 'Instructions')),
                     SizedBox(height: 40.h),

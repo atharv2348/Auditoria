@@ -174,10 +174,10 @@ class _EmailPageState extends State<EmailPage> {
                   children: [
                     SizedBox(height: 40.h),
                     Text("Enter Email",
-                        style: CustomTextstyles.subHeading
-                            .copyWith(color: Colors.grey.shade800)),
+                        style: CustomTextstyles.subHeading),
                     SizedBox(height: 40.h),
                     TextField(
+                      cursorColor: CustomColors.color5,
                       controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: CustomInputDecoration.getDecoration(

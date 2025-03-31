@@ -28,6 +28,10 @@ class CreateUserPage extends StatelessWidget {
 
   void handleOnSubmit(BuildContext context) {
     FocusScope.of(context).unfocus();
+    if (!_validateData()) {
+      return;
+    }
+
     UserModel userModel = UserModel(
         firstName: _firstNameController.text.trim(),
         lastName: _lastNameController.text.trim(),
@@ -37,6 +41,32 @@ class CreateUserPage extends StatelessWidget {
         prnNumber: _prnNumberController.text.trim());
 
     context.read<UserBloc>().add(UserCreateEvent(user: userModel));
+  }
+
+  bool _validateData() {
+    if (_firstNameController.text.trim().isEmpty) {
+      CustomSnackbar.showErrorSnackbar(
+          'First name is required.\nPlease enter your first name.');
+      return false;
+    } else if (_lastNameController.text.trim().isEmpty) {
+      CustomSnackbar.showErrorSnackbar(
+          'Last name is required.\nPlease enter your last name.');
+      return false;
+    } else if (_phoneNumberController.text.trim().isEmpty) {
+      CustomSnackbar.showErrorSnackbar(
+          'Phone number is required.\nPlease enter your Phone number.');
+      return false;
+    } else if (_phoneNumberController.text.trim().length != 10) {
+      CustomSnackbar.showErrorSnackbar(
+          'Please enter a valid 10-digit phone number.');
+      return false;
+    } else if (selectedRole.value == "Student" &&
+        _prnNumberController.text.trim().isEmpty) {
+      CustomSnackbar.showErrorSnackbar('Enter PRN number!');
+      return false;
+    }
+
+    return true;
   }
 
   @override
@@ -73,10 +103,10 @@ class CreateUserPage extends StatelessWidget {
                   children: [
                     SizedBox(height: 20.h),
                     Text('Create your free account',
-                        style: CustomTextstyles.subHeading
-                            .copyWith(color: Colors.grey.shade800)),
+                        style: CustomTextstyles.subHeading),
                     SizedBox(height: 40.h),
                     TextField(
+                      cursorColor: CustomColors.color5,
                       controller: _firstNameController,
                       decoration: CustomInputDecoration.getDecoration(
                         labelText: "First Name *",
@@ -85,6 +115,7 @@ class CreateUserPage extends StatelessWidget {
                     ),
                     SizedBox(height: 15.h),
                     TextField(
+                      cursorColor: CustomColors.color5,
                       controller: _lastNameController,
                       decoration: CustomInputDecoration.getDecoration(
                         labelText: "Last name *",
@@ -98,11 +129,11 @@ class CreateUserPage extends StatelessWidget {
                         labelText: "Email",
                         icon: const Icon(Icons.email_rounded),
                       ),
-                      // enabled: false,
                       readOnly: true,
                     ),
                     SizedBox(height: 15.h),
                     TextField(
+                      cursorColor: CustomColors.color5,
                       controller: _phoneNumberController,
                       keyboardType: TextInputType.phone,
                       decoration: CustomInputDecoration.getDecoration(
@@ -149,6 +180,7 @@ class CreateUserPage extends StatelessWidget {
                         return Visibility(
                           visible: value == 'Student',
                           child: TextField(
+                            cursorColor: CustomColors.color5,
                             controller: _prnNumberController,
                             keyboardType: TextInputType.number,
                             decoration: CustomInputDecoration.getDecoration(

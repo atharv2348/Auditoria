@@ -108,16 +108,14 @@ class _OtpPageState extends State<OtpPage> {
                         SizedBox(width: 10.w),
                         Text(
                           "Change Email",
-                          style: CustomTextstyles.medium
-                              .copyWith(color: Colors.grey.shade700),
+                          style: CustomTextstyles.medium,
                         ),
                       ],
                     ),
                   ),
                   SizedBox(height: 180.h),
                   Text("Enter OTP",
-                      style: CustomTextstyles.subHeading
-                          .copyWith(color: Colors.grey.shade800)),
+                      style: CustomTextstyles.subHeading),
                   SizedBox(height: 50.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
