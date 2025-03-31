@@ -12,6 +12,7 @@ import 'package:auditoria/screens/home/feedback_page.dart';
 import 'package:auditoria/screens/home/home_page.dart';
 import 'package:auditoria/screens/home/my_events_page.dart';
 import 'package:auditoria/screens/home/profile_page.dart';
+import 'package:auditoria/screens/home/upcoming_events_page.dart';
 import 'package:auditoria/screens/splash_screen.dart';
 import 'package:auditoria/utils/routes.dart';
 import 'package:flutter/material.dart';
@@ -99,6 +100,12 @@ final GoRouter router = GoRouter(
       name: 'myEvents',
       pageBuilder: (context, state) =>
           _buildPageWithTransition(state, const MyEventsPage()),
+    ),
+    GoRoute(
+      path: Routes.upcomingEventsPage,
+      name: 'upcomingEvents',
+      pageBuilder: (context, state) =>
+          _buildPageWithTransition(state, const UpcomingEventsPage()),
     ),
     GoRoute(
       path: Routes.feedbackPage,

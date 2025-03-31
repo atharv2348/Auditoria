@@ -18,7 +18,7 @@ class FetchMyEventsBloc extends Bloc<FetchMyEventsEvent, FetchMyEventsState> {
       FetchEvents event, Emitter<FetchMyEventsState> emit) async {
     emit(FetchMyEventsLoadingState());
     try {
-      List<EventModel> userEvents = await EventRepo.getAllUserEvents();
+      List<EventModel> userEvents = await EventRepo.getUserEvents();
       emit(FetchMyEventsSuccessState(userEvents: userEvents));
     } catch (e) {
       emit(FetchMyEventsErrorState(error: e.toString()));

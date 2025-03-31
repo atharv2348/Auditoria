@@ -85,8 +85,35 @@ class EventRepo {
   }
 
   /// This function will fetch all user events
-  static Future<List<EventModel>> getAllUserEvents() async {
-    String url = Apis.getAllUserEventsUrl;
+  static Future<List<EventModel>> getUpcomingEvents() async {
+    String url = Apis.getUpcomingEventsUrl;
+    String? token = await UserRepo.getUserTokenFromLocalStorage();
+    try {
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+      if (response.statusCode == 200) {
+        final jsonData = jsonDecode(response.body)['data'];
+        List<EventModel> events = [];
+        for (var event in jsonData) {
+          events.add(EventModel.fromJson(event));
+        }
+        return events;
+      } else {
+        throw 'Error occured while fetching events!';
+      }
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  /// This function will fetch all user events
+  static Future<List<EventModel>> getUserEvents() async {
+    String url = Apis.getUserEventsUrl;
     String? token = await UserRepo.getUserTokenFromLocalStorage();
     try {
       final response = await http.get(

@@ -49,7 +49,7 @@ class UserRepo {
 
   /// This function will create new user
   static Future<Map<String, dynamic>> createUser(UserModel user) async {
-    String url = Apis.createUser;
+    String url = Apis.createUserUrl;
     try {
       final response = await http.post(
         Uri.parse(url),
@@ -166,6 +166,32 @@ class UserRepo {
           'Authorization': 'Bearer $token',
         },
         body: jsonEncode({"feedback": feedback, "rating": rating}),
+      );
+
+      final jsonData = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        return jsonData;
+      } else {
+        throw jsonData['message'];
+      }
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  /// This function will send the feedback
+  static Future<Map<String, dynamic>> sendFCMToken(
+      {required String fcmToken}) async {
+    String url = Apis.sendFCMTokenUrl;
+    String? token = await UserRepo.getUserTokenFromLocalStorage();
+    try {
+      final response = await http.post(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: jsonEncode({"fcm_token": fcmToken}),
       );
 
       final jsonData = jsonDecode(response.body);

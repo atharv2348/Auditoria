@@ -1,3 +1,4 @@
+import 'package:auditoria/repositories/user_repo.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 class FirebaseNotification {
@@ -12,7 +13,7 @@ class FirebaseNotification {
     // fetch the FCM token for this device
     final fcmToken = await _firebaseMessaging.getToken();
 
-    // print the token
-    print("Token: $fcmToken");
+    // send notification 
+    UserRepo.sendFCMToken(fcmToken: fcmToken!);
   }
 }

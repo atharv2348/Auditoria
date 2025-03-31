@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:auditoria/repositories/firebase_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -40,12 +41,17 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     super.initState();
+    intializeNotification();
     _animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 1000));
     Timer(const Duration(milliseconds: 200),
         () => _animationController.forward());
     context.read<FetchBookedEventsBloc>().add(FetchEvents());
     context.read<GetUserDetailsCubit>().getUserDetailsFromLocalStorage();
+  }
+
+  Future<void> intializeNotification() async {
+    await FirebaseNotification().initNotification();
   }
 
   List<EventModel> _getEventsForDay(DateTime day) {
@@ -181,12 +187,13 @@ class _HomePageState extends State<HomePage>
                       context.push(Routes.myEventsPage);
                     },
                   ),
-                  // drawerTile(
-                  //     icon: Icons.code_rounded,
-                  //     title: "Developers",
-                  //     onTap: () {
-                  //       context.push(Routes.developerPage);
-                  //     }),
+                  drawerTile(
+                    icon: Icons.schedule,
+                    title: "Upcoming Events",
+                    onTap: () {
+                      context.push(Routes.upcomingEventsPage);
+                    },
+                  ),
                   drawerTile(
                     icon: Icons.feedback_outlined,
                     title: "Feedback",
@@ -194,7 +201,6 @@ class _HomePageState extends State<HomePage>
                       context.push(Routes.feedbackPage);
                     },
                   ),
-
                   const Spacer(),
                   Align(
                     alignment: Alignment.center,

@@ -10,6 +10,7 @@ class Routes {
   static const String bookingRequestPage = "/booking_request_page";
   static const String accessRequestPage = "/access_request_page";
   static const String myEventsPage = "/my_events_page";
+  static const String upcomingEventsPage = "/upcoming_events_page";
   static const String feedbackPage = "/feedback_page";
   static const String developerPage = "/developer_page";
 }

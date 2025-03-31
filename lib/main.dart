@@ -9,7 +9,6 @@ import 'package:auditoria/utils/custom_colors.dart';
 import 'package:auditoria/blocs/user_bloc/user_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:auditoria/cubits/feedback/feedback_cubit.dart';
-import 'package:auditoria/repositories/firebase_notification.dart';
 import 'package:auditoria/cubits/verify_token/verify_token_cubit.dart';
 import 'package:auditoria/blocs/create_event_bloc/create_event_bloc.dart';
 import 'package:auditoria/blocs/fetch_my_events/fetch_my_events_bloc.dart';
@@ -20,6 +19,7 @@ import 'package:auditoria/blocs/fetch_booked_events/fetch_booked_events_bloc.dar
 import 'package:auditoria/cubits/email_alert_toggle/email_alert_toggle_cubit.dart';
 import 'package:auditoria/cubits/update_user_access/update_user_access_cubit.dart';
 import 'package:auditoria/cubits/update_event_status/update_event_status_cubit.dart';
+import 'package:auditoria/blocs/fetch_upcoming_events/fetch_upcoming_events_bloc.dart';
 import 'package:auditoria/cubits/request_booking_access/request_booking_access_cubit.dart';
 
 final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
@@ -29,7 +29,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await FirebaseNotification().initNotification();
   runApp(const MyApp());
 }
 
@@ -54,6 +53,7 @@ class MyApp extends StatelessWidget {
             BlocProvider(create: (context) => VerifyTokenCubit()),
             BlocProvider(create: (context) => GetUserDetailsCubit()),
             BlocProvider(create: (context) => FetchMyEventsBloc()),
+            BlocProvider(create: (context) => FetchUpcomingEventsBloc()),
             BlocProvider(create: (context) => FeedbackCubit()),
           ],
           child: AnimatedBuilder(
