@@ -29,11 +29,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+  ThemeManager().intializeTheme();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+  final ThemeManager _themeManager = ThemeManager();
+
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -57,7 +60,7 @@ class MyApp extends StatelessWidget {
             BlocProvider(create: (context) => FeedbackCubit()),
           ],
           child: AnimatedBuilder(
-              animation: ThemeManager.themeNotifier,
+              animation: _themeManager.themeNotifier,
               builder: (context, child) {
                 return MaterialApp.router(
                   debugShowCheckedModeBanner: false,
@@ -80,7 +83,7 @@ class MyApp extends StatelessWidget {
                       centerTitle: true,
                     ),
                   ),
-                  themeMode: ThemeManager.themeNotifier.value,
+                  themeMode: _themeManager.themeNotifier.value,
                   routerConfig: router,
                 );
               }),

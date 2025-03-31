@@ -98,8 +98,6 @@ class ProfilePage extends StatelessWidget {
                           text: "LogOut",
                           color: CustomColors.color6,
                           onTap: () {
-                            // UserRepo.removeUserLocally();
-                            // router.go(Routes.emailScreen);
                             _showConfirmationDialog(
                               context: context,
                               onConfirm: () {
@@ -335,6 +333,7 @@ class _PreferencesState extends State<Preferences> {
   ValueNotifier<bool>? isEmailSubscribed;
   final OverlayPortalController _overlayPortalController =
       OverlayPortalController();
+  final ThemeManager _themeManager = ThemeManager();
 
   @override
   void initState() {
@@ -394,16 +393,16 @@ class _PreferencesState extends State<Preferences> {
                   }),
             const SizedBox(height: 12),
             ValueListenableBuilder(
-              valueListenable: ThemeManager.themeNotifier,
+              valueListenable: _themeManager.themeNotifier,
               builder: (context, value, child) {
                 return _buildSettingTile(
                   icon: Icons.dark_mode_outlined,
                   title: "Dark Mode",
                   subtitle: "Switch between light and dark themes",
-                  value: ThemeManager.themeNotifier.value == ThemeMode.dark,
+                  value: _themeManager.themeNotifier.value == ThemeMode.dark,
                   onChanged: (val) {
                     HapticFeedback.vibrate();
-                    ThemeManager.toggleTheme();
+                    _themeManager.setTheme(val);
                   },
                 );
               },

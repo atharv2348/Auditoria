@@ -1,8 +1,8 @@
-import 'package:auditoria/models/event_model.dart';
-import 'package:auditoria/widgets/custom_button.dart';
-import 'package:auditoria/utils/custom_colors.dart';
-import 'package:auditoria/utils/utility_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:auditoria/models/event_model.dart';
+import 'package:auditoria/utils/custom_colors.dart';
+import 'package:auditoria/widgets/custom_button.dart';
+import 'package:auditoria/utils/utility_functions.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void showEventDetailsSheet(BuildContext context, EventModel event) {
@@ -11,7 +11,6 @@ void showEventDetailsSheet(BuildContext context, EventModel event) {
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),
     ),
-    backgroundColor: Colors.white,
     isScrollControlled: true,
     builder: (context) {
       return Padding(

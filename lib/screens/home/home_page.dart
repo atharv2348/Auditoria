@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage>
                       onPressed: () {
                         router.push(Routes.eventFormPage);
                       },
-                      child: const Icon(Icons.add),
+                      child: const Icon(Icons.add, color: CustomColors.color3),
                     ),
                   )
                 : const SizedBox.shrink();
