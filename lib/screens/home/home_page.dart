@@ -172,7 +172,7 @@ class _HomePageState extends State<HomePage>
                         context.push(Routes.bookingRequestPage);
                       },
                     ),
-                  if (state.user.role == 'admin')
+                  if (state.user.role == 'Admin')
                     drawerTile(
                       icon: Icons.lock_person_rounded,
                       title: "Access Requests",
