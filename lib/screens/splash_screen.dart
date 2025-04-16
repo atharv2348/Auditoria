@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:auditoria/utils/routes.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:auditoria/router/app_router.dart';
 import 'package:auditoria/utils/custom_text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:auditoria/cubits/verify_token/verify_token_cubit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -37,57 +37,57 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ValueListenableBuilder<double>(
-              valueListenable: iconSizeNotifier,
-              builder: (context, size, child) {
-                return TweenAnimationBuilder<double>(
-                  tween: Tween<double>(begin: 50.w, end: size),
-                  duration: const Duration(seconds: 2),
-                  curve: Curves.easeInOut,
-                  builder: (context, animatedSize, child) {
-                    return SizedBox(
-                      width: animatedSize,
-                      height: animatedSize,
-                      child: SvgPicture.asset(
-                        './assets/images/logo.svg',
-                        semanticsLabel: 'App Logo',
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
-            SizedBox(height: 20.h),
-            ValueListenableBuilder<double>(
-              valueListenable: opacityNotifier,
-              builder: (context, opacity, child) {
-                return AnimatedOpacity(
-                  curve: Curves.easeInOut,
-                  duration: const Duration(seconds: 2),
-                  opacity: opacity,
-                  child: Text(
-                    "Auditoria",
-                    style: CustomTextstyles.heading.copyWith(fontSize: 38.sp,fontFamily: 'K2D'),
-                  ),
-                );
-              },
-            ),
-            BlocListener<VerifyTokenCubit, VerifyTokenState>(
-              listener: (context, state) {
-                if (state is NavigateToEmailPage) {
-                  router.go(Routes.emailScreen);
-                } else {
-                  router.go(Routes.homeScreen);
-                }
-              },
-              child: const SizedBox.shrink(),
-            )
-          ],
+    return BlocListener<VerifyTokenCubit, VerifyTokenState>(
+      listener: (context, state) {
+        if (state is VerifyTokenSuccessState) {
+          router.go(Routes.homeScreen);
+        } else {
+          router.go(Routes.emailScreen);
+        }
+      },
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ValueListenableBuilder<double>(
+                valueListenable: iconSizeNotifier,
+                builder: (context, size, child) {
+                  return TweenAnimationBuilder<double>(
+                    tween: Tween<double>(begin: 50.w, end: size),
+                    duration: const Duration(seconds: 2),
+                    curve: Curves.easeInOut,
+                    builder: (context, animatedSize, child) {
+                      return SizedBox(
+                        width: animatedSize,
+                        height: animatedSize,
+                        child: SvgPicture.asset(
+                          './assets/images/logo.svg',
+                          semanticsLabel: 'App Logo',
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+              SizedBox(height: 20.h),
+              ValueListenableBuilder<double>(
+                valueListenable: opacityNotifier,
+                builder: (context, opacity, child) {
+                  return AnimatedOpacity(
+                    curve: Curves.easeInOut,
+                    duration: const Duration(seconds: 2),
+                    opacity: opacity,
+                    child: Text(
+                      "Auditoria",
+                      style: CustomTextstyles.heading
+                          .copyWith(fontSize: 38.sp, fontFamily: 'K2D'),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

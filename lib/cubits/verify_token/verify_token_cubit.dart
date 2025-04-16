@@ -21,7 +21,8 @@ class VerifyTokenCubit extends Cubit<VerifyTokenState> {
     emit(VerifyTokenLoadingState());
     try {
       Map<String, dynamic> response = await UserRepo.verifyToken(token);
-      if (!response['success']) {
+      bool isExpired = response['success'];
+      if (!isExpired) {
         emit(NavigateToEmailPage());
       } else {
         await UserRepo.storeUserLocally(

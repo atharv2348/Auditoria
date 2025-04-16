@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:auditoria/repositories/firebase_notification.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -16,6 +15,7 @@ import 'package:auditoria/utils/custom_colors.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:auditoria/utils/custom_text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:auditoria/repositories/firebase_notification.dart';
 import 'package:auditoria/cubits/get_user_details/get_user_details_cubit.dart';
 import 'package:auditoria/blocs/fetch_booked_events/fetch_booked_events_bloc.dart';
 
