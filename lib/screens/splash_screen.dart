@@ -25,8 +25,8 @@ class _SplashScreenState extends State<SplashScreen> {
       iconSizeNotifier.value = 150.w;
       opacityNotifier.value = 1.0;
     });
-    Future.delayed(const Duration(seconds: 4), () {
-      navigateToNextPage();
+    Future.delayed(const Duration(seconds: 2), () {
+      Future.microtask(() => navigateToNextPage());
     });
   }
 
@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
       listener: (context, state) {
         if (state is VerifyTokenSuccessState) {
           router.go(Routes.homeScreen);
-        } else {
+        } else if (state is NavigateToEmailPage) {
           router.go(Routes.emailScreen);
         }
       },
